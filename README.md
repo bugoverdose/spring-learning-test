@@ -127,7 +127,7 @@ public class HelloDao {
 
 ### 생성자 주입
 ```java
-...
+// ...
 
 @RestController
 public class HelloController {
@@ -138,7 +138,7 @@ public class HelloController {
     }
 
     @GetMapping("/hello")
-    ...
+//  ...
 }
 ```
 
