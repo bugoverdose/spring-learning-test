@@ -33,6 +33,7 @@ public class MediaTypeTest {
     void createUser() {
         User user = new User("이름", "email@email.com");
 
+        // consumes는 contentType 관련 => 들어오는 값은 JSON 응답 형식은 자유
         RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(user)
@@ -52,6 +53,8 @@ public class MediaTypeTest {
     @DisplayName("Media Type - Accept")
     @Test
     void showUser() {
+
+        // produces는 accept 관련 => 들어오는 값과 나가는 형식이 일치해야 하며, 이에 따라 요청 구분 가능
         RestAssured.given().log().all()
                 .accept(MediaType.TEXT_HTML_VALUE)
                 .when().get("/media-type/users")

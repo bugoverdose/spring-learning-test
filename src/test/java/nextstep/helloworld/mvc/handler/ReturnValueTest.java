@@ -72,7 +72,7 @@ public class ReturnValueTest {
     /**
      * ReturnValueController > responseEntityFor400 메서드
      */
-    @DisplayName("Return Value - ResponseEntity")
+    @DisplayName("Return Value - ResponseEntity 400")
     @Test
     void responseEntityFor400() {
         RestAssured.given().log().all()
