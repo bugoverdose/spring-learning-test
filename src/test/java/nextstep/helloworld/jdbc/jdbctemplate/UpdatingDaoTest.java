@@ -24,7 +24,8 @@ public class UpdatingDaoTest {
 
     @BeforeEach
     void setUp() {
-//        updatingDAO = new UpdatingDAO(jdbcTemplate);
+        // @Autowired 먹힘. @SpringBootTest 붙어서?
+        // updatingDAO = new UpdatingDAO(jdbcTemplate);
 
         jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
         jdbcTemplate.execute("CREATE TABLE customers(" +
@@ -58,7 +59,6 @@ public class UpdatingDaoTest {
     void key() {
         Customer customer = new Customer("Leonor", "Watling");
         Long id = updatingDAO.insertWithKeyHolder(customer);
-
         assertThat(id).isNotNull();
     }
 }

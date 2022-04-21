@@ -1,7 +1,11 @@
 package nextstep.helloworld.jdbc.jdbctemplate;
 
+import java.util.Objects;
 import nextstep.helloworld.jdbc.Customer;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,20 +17,22 @@ public class NamedParamDAO {
     }
 
     /**
-     * MapSqlParameterSource
-     * public <T> T queryForObject(String sql, SqlParameterSource paramSource, Class<T> requiredType)
+     * MapSqlParameterSource public <T> T queryForObject(String sql, SqlParameterSource paramSource, Class<T>
+     * requiredType)
      */
     public int useMapSqlParameterSource(String firstName) {
         String sql = "select count(*) from customers where first_name = :first_name";
-        return 0;
+        SqlParameterSource paramSource = new MapSqlParameterSource("first_name", firstName);
+        return namedParameterJdbcTemplate.queryForObject(sql, paramSource, Integer.class);
     }
 
     /**
-     * BeanPropertySqlParameterSource
-     * public <T> T queryForObject(String sql, SqlParameterSource paramSource, Class<T> requiredType)
+     * BeanPropertySqlParameterSource public <T> T queryForObject(String sql, SqlParameterSource paramSource, Class<T>
+     * requiredType)
      */
     public int useBeanPropertySqlParameterSource(Customer customer) {
         String sql = "select count(*) from customers where first_name = :firstName";
-        return 0;
+        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(customer);
+        return namedParameterJdbcTemplate.queryForObject(sql, paramSource, Integer.class);
     }
 }

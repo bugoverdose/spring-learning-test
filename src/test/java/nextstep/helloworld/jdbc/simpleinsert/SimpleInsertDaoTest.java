@@ -1,5 +1,7 @@
 package nextstep.helloworld.jdbc.simpleinsert;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import nextstep.helloworld.jdbc.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,12 +36,18 @@ public class SimpleInsertDaoTest {
     @Test
     void insertWithMap() {
         Customer customer = new Customer("Leonor", "Watling");
-        simpleInsertDao.insertWithMap(customer);
+        Customer newCustomer = simpleInsertDao.insertWithMap(customer);
+
+        assertThat(newCustomer).isNotNull();
+        assertThat(newCustomer.getId()).isNotNull();
     }
 
     @Test
     void insertWithBeanPropertySqlParameterSource() {
         Customer customer = new Customer("Leonor", "Watling");
-        simpleInsertDao.insertWithBeanPropertySqlParameterSource(customer);
+        Customer newCustomer = simpleInsertDao.insertWithBeanPropertySqlParameterSource(customer);
+
+        assertThat(newCustomer).isNotNull();
+        assertThat(newCustomer.getId()).isNotNull();
     }
 }

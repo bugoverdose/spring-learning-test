@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @JdbcTest
 public class QueryingDaoTest {
+    // @Autowired 붙여도 자동으로 객체 생성 안됨. @JdbcTest 때문?
     private QueryingDAO queryingDAO;
 
     @Autowired
