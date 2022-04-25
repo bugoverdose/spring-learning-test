@@ -61,12 +61,11 @@ class WebMvcConfigurationTest {
      * <p>
      * 디버깅 해보기!
      * <p>
-     * WebMvcConfiguration의 addInterceptors 메서드로 설정하기
+     * WebMvcConfiguration의 addArgumentResolvers 메서드로 설정하기
      */
     @Test
     void addArgumentResolvers() {
-        RestAssured
-                .given().log().all()
+        RestAssured.given().log().all()
                 .when().get("/favorites")
                 .then().log().all()
                 .statusCode(HttpStatus.OK.value())

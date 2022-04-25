@@ -31,6 +31,8 @@ public class MvcConfigController {
 
     @GetMapping("/favorites")
     public ResponseEntity<List<FavoriteResponse>> showFavorites(@AuthenticationPrincipal LoginMember loginMember) {
+        System.out.println("!!!인자로 들어온 값!!!");
+        System.out.println(loginMember);
         if (loginMember == null || loginMember.getId() == null) {
             throw new AuthorizationException();
         }
@@ -43,6 +45,4 @@ public class MvcConfigController {
         );
         return ResponseEntity.ok().body(favoriteResponses);
     }
-
-
 }
