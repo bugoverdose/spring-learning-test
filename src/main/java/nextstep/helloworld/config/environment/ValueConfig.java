@@ -1,7 +1,16 @@
 package nextstep.helloworld.config.environment;
 
-// TODO: Java-based Configuration을 하기 위한 클래스로 지정하기
-// TODO: application.properties 파일을 활용하기 위한 설정 추가하기
-// TODO: nextstep.helloworld.core.environment 내에 있는 스프링 빈을 스캔하기
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+@Configuration
+@PropertySource("classpath:application.properties")
 public class ValueConfig {
+
+    @Bean
+    public JwtTokenExpireProvider jwtTokenExpireProvider(@Value("${security-jwt-token-expire-length}") long validityInMilliseconds) {
+        return new JwtTokenExpireProvider(validityInMilliseconds);
+    }
 }

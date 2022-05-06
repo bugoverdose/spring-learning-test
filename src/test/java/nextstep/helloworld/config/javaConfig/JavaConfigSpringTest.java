@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class JavaConfigSpringTest {
+
     @Autowired
     private AuthenticationPrincipalArgumentResolver authenticationPrincipalArgumentResolver;
 

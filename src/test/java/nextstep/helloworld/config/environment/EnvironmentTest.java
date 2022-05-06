@@ -9,7 +9,8 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EnvironmentTest {
-    @Test
+
+    @Test // PropertySourceConfig
     void key() {
         ApplicationContext context = new AnnotationConfigApplicationContext(PropertySourceConfig.class);
         String[] beanDefinitionNames = context.getBeanDefinitionNames();

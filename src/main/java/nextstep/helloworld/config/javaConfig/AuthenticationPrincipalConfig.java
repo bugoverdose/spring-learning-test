@@ -1,15 +1,20 @@
 package nextstep.helloworld.config.javaConfig;
 
-// TODO: Java-based Configuration을 하기 위한 클래스로 지정하기
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class AuthenticationPrincipalConfig {
 
-    // TODO: AuthService 빈을 등록하기
-    public AuthService authService() {
-        return null;
+    // 메서드명이 곧 해당 빈의 bean definition name
+    @Bean
+    public AuthService newNameForAuthServiceBean() {
+        return new AuthService();
     }
 
-    // TODO: AuthenticationPrincipalArgumentResolver를 빈 등록하고 authService에 대한 의존성을 주입하기
-    public AuthenticationPrincipalArgumentResolver authenticationPrincipalArgumentResolver() {
-        return null;
+    // Bean Dependencies : 빈 이름이 아닌 타입 기반으로 의존성을 찾아와서 호출?
+    @Bean
+    public AuthenticationPrincipalArgumentResolver authenticationPrincipalArgumentResolver(AuthService authService) {
+        return new AuthenticationPrincipalArgumentResolver(authService);
     }
 }
